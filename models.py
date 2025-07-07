@@ -19,12 +19,14 @@ def tambah_produk():
     stok = int(input("Stok: "))
     harga = float(input("Harga: "))
     rating = float(input("Rating (1-5): "))
+    kategori = input("Kategori Produk: ") # New input for category
     produk = {
         "nama": nama,
         "stok": stok,
         "harga": harga,
         "rating": rating,
-        "jaminan": False
+        "jaminan": False,
+        "kategori": kategori # Add category to product dictionary
     }
     data.append(produk)
     save_data(data)
@@ -75,8 +77,8 @@ def jaminan_risiko():
 
 def cari_kategori():
     data = load_data()
-    kategori = input("Masukkan kategori (kata kunci dalam nama produk): ")
-    hasil = [p for p in data if kategori.lower() in p["nama"].lower()]
+    kategori = input("Masukkan kategori yang dicari: ") 
+    hasil = [p for p in data if "kategori" in p and kategori.lower() == p["kategori"].lower()] 
     if hasil:
         print("Hasil Pencarian berdasarkan Kategori:")
         for p in hasil:
