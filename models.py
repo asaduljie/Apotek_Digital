@@ -1,5 +1,17 @@
+import json
+import os
 
-from database import load_data, save_data
+DATA_FILE = "produk.json"
+
+def load_data():
+    if not os.path.exists(DATA_FILE):
+        return []
+    with open(DATA_FILE, "r") as file:
+        return json.load(file)
+
+def save_data(data):
+    with open(DATA_FILE, "w") as file:
+        json.dump(data, file, indent=4)
 
 def tambah_produk():
     data = load_data()
@@ -60,3 +72,14 @@ def jaminan_risiko():
             print("Jaminan risiko ditambahkan.")
             return
     print("Produk tidak ditemukan.")
+
+def cari_kategori():
+    data = load_data()
+    kategori = input("Masukkan kategori (kata kunci dalam nama produk): ")
+    hasil = [p for p in data if kategori.lower() in p["nama"].lower()]
+    if hasil:
+        print("Hasil Pencarian berdasarkan Kategori:")
+        for p in hasil:
+            print(p)
+    else:
+        print("Tidak ada produk dalam kategori tersebut.")

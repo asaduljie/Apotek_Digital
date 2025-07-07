@@ -1,5 +1,12 @@
+from models import (
+    tambah_produk,
+    update_stok,
+    cari_produk,
+    tampilkan_produk,
+    jaminan_risiko,
+    cari_kategori
+)
 
-from models import tambah_produk, update_stok, cari_produk, tampilkan_produk, jaminan_risiko
 from utils import rekomendasi
 
 def tampilkan_menu():
@@ -11,6 +18,7 @@ def tampilkan_menu():
         print("4. Tampilkan Semua Produk")
         print("5. Tambah Jaminan Risiko")
         print("6. Tampilkan Rekomendasi")
+        print("7. Cari Produk Berdasarkan Kategori")  
         print("0. Keluar")
         pilihan = input("Masukkan pilihan: ")
 
@@ -26,6 +34,8 @@ def tampilkan_menu():
             jaminan_risiko()
         elif pilihan == "6":
             rekomendasi()
+        elif pilihan == "7":
+            cari_kategori()  
         elif pilihan == "0":
             print("Terima kasih telah menggunakan sistem.")
             break
