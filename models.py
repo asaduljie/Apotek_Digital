@@ -85,3 +85,14 @@ def cari_kategori():
             print(p)
     else:
         print("Tidak ada produk dalam kategori tersebut.")
+
+def hapus_produk():
+    data = load_data()
+    nama = input("Masukkan nama produk yang akan dihapus: ")
+    for i, produk in enumerate(data):
+        if produk["nama"].lower() == nama.lower():
+            del data[i]
+            save_data(data)
+            print("Produk berhasil dihapus.")
+            return
+    print("Produk tidak ditemukan.")
